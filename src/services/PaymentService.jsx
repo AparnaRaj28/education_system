@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const GETALL_PAYMENT_REST_API = 'http://localhost:8081/es/payments';
+const GETALL_PAYMENT_REST_API = 'http://localhost:8082/es/payments';
 const SAVE_PAYMENT_REST_API = 'http://localhost:8081/es/savepayment/student';
 
 class PaymentService{

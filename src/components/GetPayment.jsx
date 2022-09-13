@@ -36,8 +36,8 @@ const GetPayment = () => {
                         payment =>
                           <tr key={payment.id}>
                             <td>{payment.id}</td>
-                             <td>{payment.decription}</td>
-                             <td>{payment.amountpaid}</td>
+                             <td>{payment.description}</td>
+                             <td>{payment.amountPaid}</td>
                              <td>{payment.paymentDate}</td>
                              <td>{payment.student}</td>
 
