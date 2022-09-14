@@ -1,13 +1,37 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Axios from 'axios'
+
 import  { useNavigate  } from 'react-router-dom'
 import './Form.css'
 import HomeNavbar from '../HomePage/HomeNavbar'
 import Footer from '../HomePage/Footer'
+import StudentService from '../../services/StudentService'
 
 function Login() {
+
+   const [username,setUsername]=useState("");
+   const [password,setPassword]=useState("");
+   const [students, setStudents] = useState([])
+   const navigate=useNavigate();
+
+   useEffect(() => {
+    StudentService.getAllStudents().then((response)=>{
+        setStudents(response.data)
+        console.log(response.data);
+     }).catch(error =>{
+        console.log(error);
+     })
+  
+}, [])
+
+   function loginDetails()
+  {
+     if (username == "admin" && password=="admin"){
+         navigate('/admin');
+     }
+  }
 
   return (
     <div>
@@ -18,19 +42,19 @@ function Login() {
                 <br></br><br></br><br></br><br></br>
                 <div className="form-group">
                     <label className='label'>Username/Email</label>
-                    <input type="text" className="form-control" placeholder="Username/Email" name="uname"
-                     required/>
+                    <input type="text" className="form-control" placeholder="Username/Email" name="uname" autoComplete='off'
+                     onChange={(e)=>setUsername(e.target.value)} required/>
                 </div>
                  <br></br>
                 <div className="form-group">
                     <label className='label'>Password</label>
                     <input type="password" className="form-control" placeholder="Password" name="password"
-                     required/>
+                     onChange={(e)=>setPassword(e.target.value)} required/>
                 </div>
 
                 <br></br>
 
-                <button type="submit" className="btn btn-dark btn-lg btn-block" >Login</button>
+                <button className="btn btn-dark btn-lg btn-block" onChange={loginDetails}>Login</button>
                 <p className="forgot-password text-right">
                     Not Registered?  <Link to={"/register"}>Register here</Link>
                 </p>

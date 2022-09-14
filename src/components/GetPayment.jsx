@@ -23,11 +23,12 @@ const GetPayment = () => {
         <Link to="/addPayment" className='btn btn-primary mb-2'>Add Payment</Link>
         <table className='table table-bordered table-striped'>
             <thead>
-                <th>Payment id</th>
+                <th>Receipt id</th>
                 <th>Description</th>
-                <th>Amount Paid</th>
+                <th>Amount </th>
                 <th>Payment Date</th>
-                <th>Student</th>
+                <th>Student Name</th>
+                <th>Student ID</th>
             </thead>
 
             <tbody>
@@ -39,7 +40,8 @@ const GetPayment = () => {
                              <td>{payment.description}</td>
                              <td>{payment.amountPaid}</td>
                              <td>{payment.paymentDate}</td>
-                             <td>{payment.student}</td>
+                             <td>{payment.student.firstName}</td>
+                             <td>{payment.student.id}</td>
 
                           </tr>
                     
