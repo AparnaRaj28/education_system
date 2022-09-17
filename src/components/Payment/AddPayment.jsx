@@ -1,6 +1,9 @@
 import React,{useState} from 'react'
 import {useNavigate} from 'react-router-dom'
-import PaymentService from '../services/PaymentService'
+import PaymentService from '../../services/PaymentService'
+import StudentNavbar from '../Student/StudentNavbar'
+
+
 
 
 const AddPayment = () => {
@@ -26,6 +29,8 @@ const AddPayment = () => {
 
   return (
     <div>
+      <StudentNavbar/><br></br><br></br><br></br>
+      <br></br><br></br><br></br>
       
       <div className='container'>
         <div className='card col-md-6 offset-md-3 offset-md-3'>

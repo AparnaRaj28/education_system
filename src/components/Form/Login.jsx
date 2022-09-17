@@ -7,7 +7,7 @@ import  { useNavigate  } from 'react-router-dom'
 import './Form.css'
 import HomeNavbar from '../HomePage/HomeNavbar'
 import Footer from '../HomePage/Footer'
-import StudentService from '../../services/StudentService'
+import StudentService from '../../services/StudentService2'
 
 function Login() {
 
@@ -16,15 +16,15 @@ function Login() {
    const [students, setStudents] = useState([])
    const navigate=useNavigate();
 
-   useEffect(() => {
-    StudentService.getAllStudents().then((response)=>{
-        setStudents(response.data)
-        console.log(response.data);
-     }).catch(error =>{
-        console.log(error);
-     })
+//    useEffect(() => {
+//     StudentService.getAllStudents().then((response)=>{
+//         setStudents(response.data)
+//         console.log(response.data);
+//      }).catch(error =>{
+//         console.log(error);
+//      })
   
-}, [])
+// }, [])
 
    function loginDetails()
   {
@@ -54,7 +54,7 @@ function Login() {
 
                 <br></br>
 
-                <button className="btn btn-dark btn-lg btn-block" onChange={loginDetails}>Login</button>
+                <button className="btn btn-dark btn-lg btn-block" onClick={loginDetails}>Login</button>
                 <p className="forgot-password text-right">
                     Not Registered?  <Link to={"/register"}>Register here</Link>
                 </p>

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 function StudentNavbar() {
   return (
     <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark mb-3">
@@ -17,30 +17,17 @@ function StudentNavbar() {
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Home <span class="sr-only">Home</span></a>
                         </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#myAlert" data-toggle="collapse">Alert</a>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Trainings <span class="sr-only"></span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="" data-target="#myModal" data-toggle="modal">About</a>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Payment History <span class="sr-only"></span></a>
                         </li>
-                        <li class="nav-item">
-                  <a class="nav-link waves-effect waves-light text-white">
-                    <i class="fab fa-google-plus-g"></i>
-                  </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light text-white">
-                        <i class="fas fa-envelope-open-text"></i>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link waves-effect waves-light text-white">
-                          <i class="fas fa-align-justify"></i>
-                      </a>
-                    </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Courses <span class="sr-only"></span></a>
+                        </li>
                     </ul>
+
                 </div>
        </nav>
   )

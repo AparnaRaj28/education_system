@@ -1,13 +1,16 @@
 import React, { useState,useEffect } from 'react'
-import TrainingScheduleService from '../services/TrainingScheduleService'
+import TrainingSchuduleService from '../services/TrainingSchuduleService'
 import {Link} from 'react-router-dom'
 
-const GetPayment = () => {
+import PaymentModal from './Payment/PaymentModal'
 
+const GetTrainingSchedules = () => {
+
+    const[openModal,setopenModal]=useState(false);
     const [trainingSchedules, setTrainingSchedules] = useState([])
 
     useEffect(() => {
-        TrainingScheduleService.getAllTrainingSchedules().then((response)=>{
+        TrainingSchuduleService.getAllTrainingSchudule().then((response)=>{
             setTrainingSchedules(response.data)
             console.log(response.data);
          }).catch(error =>{
@@ -18,7 +21,10 @@ const GetPayment = () => {
     
 
   return (
+    
     <div className='container'>
+        {/* <StudentNavbar/><br></br><br></br><br></br><br></br><br></br> */}
+        <br></br> <br></br> <br></br>
         <h2 className='text-center'>Training Schedules</h2>
         {/* <Link to="/addPayment" className='btn btn-primary mb-2'>Add Payment</Link> */}
         <table className='table table-bordered table-striped'>
@@ -44,8 +50,13 @@ const GetPayment = () => {
                              <td>{schedule.startDate}</td>
                              <td>{schedule.endDate}</td>
                              <td>{schedule.timings}</td>
-                             <td><Link to ="/enroll" className='btn btn-primary mb-2'>Enroll</Link></td>
-
+                             <td><button onClick={()=>{
+                                setopenModal(true);
+                             }}>
+                             Enroll</button>
+                             
+                             </td>
+                             
                           </tr>
                     
                         
@@ -54,9 +65,9 @@ const GetPayment = () => {
             </tbody>
 
         </table>
-
+        { openModal && <PaymentModal closeModal={setopenModal}/>}
     </div>
   )
 }
 
-export default GetPayment
+export default GetTrainingSchedules

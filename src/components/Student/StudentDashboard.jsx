@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 
 function StudentDashboard() {
 
@@ -24,7 +24,7 @@ function StudentDashboard() {
                  <span aria-hidden="true">×</span>
                  <span class="sr-only">Close</span>
              </button>
-             <strong>Data and Records</strong> Learn more about employee
+             
          </div>
          <div class="row mb-3">
              <div class="col-xl-3 col-sm-6 py-2">
@@ -33,7 +33,7 @@ function StudentDashboard() {
                          <div class="rotate">
                              <i class="fa fa-user fa-4x"></i>
                          </div>
-                         <h6 class="text-uppercase">Profile</h6>
+                         <h6 class="text-uppercase"><Link to={"/students"} style={{color: '#FFF'}}>Profile</Link></h6>
                          {/* <h1 class="display-4">134</h1> */}
                      </div>
                  </div>
@@ -44,7 +44,7 @@ function StudentDashboard() {
                          <div class="rotate">
                          <i class="fa-sharp fa-solid fa-chalkboard-user"></i>
                          </div>
-                         <h6 class="text-uppercase">Trainings</h6>
+                         <h6 class="text-uppercase"><Link to={"/trainingSchedules"} style={{color: '#FFF'}}>Trainings</Link></h6>
                          {/* <h1 class="display-4">87</h1> */}
                      </div>
                  </div>

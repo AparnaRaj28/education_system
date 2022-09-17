@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './HomeNavbar.css';
+import './HomeNavbar.css'
 
-function Navbar() {
+function HomeNavbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -86,4 +86,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default HomeNavbar;

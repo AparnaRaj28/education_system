@@ -6,9 +6,9 @@ function Footer() {
   return (
     <div className='footer-container'>
       <section className='footer-subscription'>
-        <p className='footer-subscription-heading'>
+        <span className='footer-subscription-heading'>
          @EducationSystem
-        </p>
+        </span>
  
   
       </section>
