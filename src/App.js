@@ -4,7 +4,7 @@ import './App.css';
 import GetTrainingSchedules from './components/GetTrainingSchedules';
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom'
 import Home from './components/HomePage/Home';
-import Login from './components/Form/Login';
+import Login from './components/Form/AdminLogin';
 import Register from './components/Form/Register';
 import StudentHome from './components/Student/StudentHome';
 import ListOfStudents from './components/StudentComponents/ListOfStudents';
@@ -28,6 +28,11 @@ import AdminAddProgress from './components/AdminComponent/pages/AdminAddProgress
 import AdminScheduleTrainings from './components/AdminComponent/pages/AdminScheduleTrainings';
 import StudentTrainingSchedules from './components/Student/Pages/StudentTrainingSchedules';
 import AdminAddSchedule from './components/AdminComponent/pages/AdminAddSchedule';
+import AdminLogin from './components/Form/AdminLogin';
+import StudentLogin from './components/Form/StudentLogin';
+import AdminAddCourse from './components/AdminComponent/pages/AdminAddCourse';
+import StudentProfile from './components/Student/Pages/StudentProfile';
+import StudentGetPayment from './components/Student/StudentGetPayment';
 
 
 
@@ -47,10 +52,11 @@ function App() {
 
 
             <Route path='/' element={<Home/>}></Route>
-            <Route path='/sign-in' element={<Login/>}></Route>
+            <Route path='/studentLogin' element={<StudentLogin/>}></Route>
+            <Route path='/adminLogin' element={<AdminLogin/>}></Route>
             <Route path='/register' element={<Register/>}></Route>
             <Route path='/trainingSchedules' element={<GetTrainingSchedules/>}></Route>
-            <Route path='/student' element={<StudentHome/>}></Route>
+            <Route path='/student/:id' element={<StudentHome/>}></Route>
             <Route path= "/students" element = {<ListOfStudents/>}></Route>
 
           
@@ -92,11 +98,18 @@ function App() {
          <Route path="/admin/schedules" element ={<AdminScheduleTrainings/>}></Route> 
          <Route path="/admin/addSchedule" element ={<AdminAddSchedule/>}></Route> 
          <Route path="/admin/update-training/:id" element ={<AdminAddSchedule/>}></Route>
+          
+         <Route path="/admin/updateCourse/:id" element ={<AdminAddCourse/>}></Route>
+         
          {/* <Route path="/admin/addProgress" element ={<AdminAddProgress/>}></Route>  */}
 
 
          {/* Student */}
          <Route path="/student/schedules" element ={<StudentTrainingSchedules/>}></Route> 
+         <Route path="/student/schedules/:id" element ={<StudentTrainingSchedules/>}></Route> 
+         <Route path="/student/profile/:id" element ={<StudentProfile/>}></Route> 
+         <Route path='/student/addPayment/:student_id/:courseId' element={<AddPayment/>}></Route>
+         <Route path="/student/payment/:id" element ={<StudentGetPayment/>}></Route> 
 
   
           </Routes>

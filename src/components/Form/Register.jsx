@@ -7,6 +7,7 @@ import {useForm} from 'react-hook-form';
 import * as yup from 'yup'
 import {yupResolver} from '@hookform/resolvers/yup'
 import StudentService from '../../services/StudentService'
+import HomeNavbar1 from '../HomePage/HomeNavbar1'
 
 function Register() {
   
@@ -17,10 +18,10 @@ function Register() {
         firstName : yup.string().matches(/^[A-Za-z ]*$/, 'Please enter valid name').max(40).required("First name is required"),
         lastName :yup.string().matches(/^[A-Za-z ]*$/, 'Please enter valid name').max(40).required("Last name is required"),
       
-        mobile : yup.string().min(10,"Mobile must contain 10 digits").max(10,"Mobile must contain 10 digits").required("Mobile is required").matches(phoneRegExp,"Invalid mobile"),
-        email : yup.string().email().required("Email is required"),
+        mobile : yup.string().required("Mobile is required").min(10,"Mobile must contain 10 digits").max(10,"Mobile must contain 10 digits").matches(phoneRegExp,"Invalid mobile"),
+        email : yup.string().email("Invalid email").required("Email is required"),
         address : yup.string().required("Address is required"),
-        password : yup.string().min(4,"Password must contain atleast 4 characters").max(12,"Password cannot exceed 12 characters").required("Password is required"),
+        password : yup.string().required("Password is required").min(4,"Password must contain atleast 4 characters").max(12,"Password cannot exceed 12 characters"),
         confirmPassword : yup.string().oneOf([yup.ref("password"),null],"Passwords must match").required("Re-enter password"),
 
     });
@@ -65,7 +66,7 @@ function Register() {
         StudentService.createStudent(student).then((response)=>{
             console.log(response.data);
             alert("Student succesfully registered");
-            navigate("/sign-in");
+            navigate("/studentLogin");
         })
         .catch(error=>{
             console.log(error)
@@ -84,7 +85,7 @@ function Register() {
 
   return (
     <div>
-        <HomeNavbar/>
+        <HomeNavbar1/>
         <br></br><br></br><br></br>
         <form className='form' onSubmit={handleSubmit(onSubmit)}>
                 <h3 align="center" className='title'>Register</h3>
@@ -159,7 +160,7 @@ function Register() {
 
                 <button type="submit" className="btn btn-dark btn-lg btn-block" >Register</button>
                 <p className="forgot-password text-right">
-                    Already registered <Link to={"/sign-in"}>Login here</Link>
+                    Already registered <Link to={"/studentLogin"}>Login here</Link>
                 </p>
             </form>
         

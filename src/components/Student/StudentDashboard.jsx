@@ -1,15 +1,19 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import StudentFooter from './StudentFooter'
 
-function StudentDashboard() {
+function StudentDashboard(props) {
 
 
-         
+    
 
   return (
+    
     <div>
+       
+
      <div class="col main pt-5 mt-3">
-         
+       
          <nav aria-label="breadcrumb">
          {/* <ol class="breadcrumb">
              <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -33,7 +37,8 @@ function StudentDashboard() {
                          <div class="rotate">
                              <i class="fa fa-user fa-4x"></i>
                          </div>
-                         <h6 class="text-uppercase"><Link to={"/students"} style={{color: '#FFF'}}>Profile</Link></h6>
+                        
+                         <h6 class="text-uppercase"><Link to={`/student/profile/${props.data}`} style={{color: '#FFF'}}>Profile</Link></h6>
                          {/* <h1 class="display-4">134</h1> */}
                      </div>
                  </div>
@@ -44,7 +49,7 @@ function StudentDashboard() {
                          <div class="rotate">
                          <i class="fa-sharp fa-solid fa-chalkboard-user"></i>
                          </div>
-                         <h6 class="text-uppercase"><Link to={"/trainingSchedules"} style={{color: '#FFF'}}>Trainings</Link></h6>
+                         <h6 class="text-uppercase"><Link to={`/student/schedules/${props.data}`} style={{color: '#FFF'}}>Trainings</Link></h6>
                          {/* <h1 class="display-4">87</h1> */}
                      </div>
                  </div>
@@ -55,29 +60,30 @@ function StudentDashboard() {
                          <div class="rotate">
                          <i class="fa-regular fa-credit-card"></i>
                          </div>
-                         <h6 class="text-uppercase">Payment History</h6>
+                         <h6 class="text-uppercase"><Link to={`/student/payment/${props.data}`} style={{color: '#FFF'}}>Payment History</Link></h6>
                          {/* <h1 class="display-4">125</h1> */}
                      </div>
                  </div>
              </div>
-             <div class="col-xl-3 col-sm-6 py-2">
+             {/* <div class="col-xl-3 col-sm-6 py-2">
                  <div class="card text-white bg-warning h-100">
                      <div class="card-body">
                          <div class="rotate">
                          <i class="fa-solid fa-file"></i>
                          </div>
                          <h6 class="text-uppercase">Courses</h6>
-                         {/* <h1 class="display-4">36</h1> */}
+                         {/* <h1 class="display-4">36</h1> 
                      </div>
                  </div>
-             </div>
+             </div> */}
          </div>
   
          <hr/>
-    
+       <h2>Your Roll No : {props.data}</h2>
         
   
      </div>
+     <StudentFooter/>
     </div>
   )
 }

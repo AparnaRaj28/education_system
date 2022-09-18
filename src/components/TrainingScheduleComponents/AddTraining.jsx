@@ -21,18 +21,19 @@ const AddTraining = () => {
     const saveOrUpdateTrainingSchedule=(e)=>{
         e.preventDefault();
         const trainingSchudule ={id,timings,startDate,endDate,courseId,trainerId}
-        const traininScheduleupdate={id,timings,startDate,endDate}
+        // const traininScheduleupdate={id,timings,startDate,endDate}
         console.log(trainingSchudule)
         if(id){
             TrainingSchuduleService.updateTrainingSchudule(id, trainingSchudule).then((Response) =>{
                 console.log(Response.data)
+                alert("Schedule updated");
                 GotoNext();
             }).catch(error =>{
                 console.log(error)
             })
 
         }else{
-            TrainingSchuduleService.createTrainingSchudule(traininScheduleupdate).then((Response) => {
+            TrainingSchuduleService.createTrainingSchudule(trainingSchudule).then((Response) => {
                 console.log(Response.data)
                 alert("Training scheduled successfully");
                 GotoNext();

@@ -7,7 +7,8 @@ function StudentNavbar() {
                     <button type="button" class="navbar-toggler mr-2 " data-toggle="offcanvas" title="Toggle responsive left sidebar">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="#" title="Free Bootstrap 4 Admin Template">Student</a>
+                    <a class="navbar-brand" href="#" title="Free Bootstrap 4 Admin Template">Welcome Student</a>
+                    <Link to="/" className='btn btn-secondary'>Logout</Link>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
                     <span class="navbar-toggler-icon"></span>

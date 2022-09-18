@@ -1,5 +1,6 @@
 import React from 'react'
 import AddTraining from '../../TrainingScheduleComponents/AddTraining'
+import AdminFooter from '../AdminFooter'
 import Navbar from '../Navbar'
 
 function AdminAddSchedule() {
@@ -7,6 +8,7 @@ function AdminAddSchedule() {
     <div>
         <Navbar/>
         <AddTraining/>
+        <AdminFooter/>
     </div>
   )
 }

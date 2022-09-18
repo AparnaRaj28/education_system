@@ -1,55 +1,44 @@
-import React,{useState , useEffect} from 'react'
-import {Link, useNavigate} from 'react-router-dom'
-import StudentService from '../../services/StudentService'
+import React,{useState,useEffect} from 'react'
+import {useParams,Link} from 'react-router-dom'
+import StudentService from '../../../services/StudentService';
+import StudentFooter from '../StudentFooter';
+import StudentNavbar from '../StudentNavbar';
 
-const ListOfStudents = () => {
-    const [students, setstudents] = useState([])
-    const navigate=useNavigate();
+function StudentProfile(){
 
+    const {id} = useParams();
+    console.log(id)
+
+    //**********************Student detials by id************************** */
+    const [student, setstudents] = useState([])
     useEffect(() => {
-        StudentService.getAllStudent().then((Response) =>{
+        StudentService.getStudentById(id).then((Response) => {
             setstudents(Response.data)
-            console.log(Response.data);
+          console.log(Response.data)
         }).catch(error =>{
-            console.log(error);
-        })
-      
-    }, [])
+          console.log(error);
+      })
+      }, [])
+    //*************************************************************** */
 
-    const deleteStudent =(studentId) =>{
-        StudentService.deleteStudent(studentId).then((respond) => {
-            alert("User deleted");
-            navigate("/admin/student")
-
-        }).catch(error =>{
-            console.log(error);
-        })
-
-    }
-    
   return (
-    <div className='container'>
-   
-    {/* <Link to = "/addstudent" className="btn btn-primary">Add Student</Link> */}
-    <br/><br/>
-        <h2 className='text-center'>List of Students</h2>
+    <div>
+        <StudentNavbar/>
+        <br></br>  <br></br>  <br></br>  <br></br>
+        <h2 className='text-center'>Your Details</h2>
+        <br></br>  <br></br> 
         <table className='table table-bordered table-striped'>
             <thead>
                 <th>Roll No</th>
                 <th>Full name</th>
-                {/* <th>FirstName</th>
-                <th>LastName</th> */}
+               
                 <th>Mobile</th>
                 <th>Email Id</th>
-                {/* <th>Action</th> */}
-                {/* <th>Progress Id</th>
-                <th>Payment Id</th>
-                <th>Schudule Id</th> */} 
+            
             </thead>
             <tbody>
                 {
-                    students.map(
-                        student =>
+                    
                         <tr key={student.id}>
                             <td>{student.id}</td>
                             {/* <td>{student.firstName}</td> */}
@@ -68,14 +57,17 @@ const ListOfStudents = () => {
                             <td>{student.paymentId}</td>
                             <td>{student.schudle}</td> */}
                         </tr>
-                    )
+                        
                     
                 }
                 
             </tbody>
         </table>
+        <Link className='btn btn-info' to={`/student/${id}`}>Go back</Link>
+        <StudentFooter/>
     </div>
+    
   )
 }
 
-export default ListOfStudents
+export default StudentProfile

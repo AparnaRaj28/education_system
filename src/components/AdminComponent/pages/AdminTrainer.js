@@ -1,5 +1,6 @@
 import React from 'react'
 import ListOfTrainers from '../../TrainerComponents/ListOfTrainers'
+import AdminFooter from '../AdminFooter'
 import Navbar from '../Navbar'
 
 function AdminTrainer() {
@@ -7,6 +8,7 @@ function AdminTrainer() {
     <div>
         <Navbar/>
         <ListOfTrainers/>
+        <AdminFooter/>
     </div>
   )
 }

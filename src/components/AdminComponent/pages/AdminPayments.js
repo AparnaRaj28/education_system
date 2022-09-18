@@ -1,5 +1,6 @@
 import React from 'react'
 import GetPayment from '../../Payment/GetPayment'
+import AdminFooter from '../AdminFooter'
 import Navbar from '../Navbar'
 
 function AdminPayments() {
@@ -7,6 +8,7 @@ function AdminPayments() {
     <div>
         <Navbar/>
         <GetPayment/>
+        <AdminFooter/>
     </div>
   )
 }

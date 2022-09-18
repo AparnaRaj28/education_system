@@ -1,5 +1,6 @@
 import React from 'react'
 import ListOfProgress from '../../ProgressComponents/ListOfProgress'
+import AdminFooter from '../AdminFooter'
 import Navbar from '../Navbar'
 
 function AdminProgress() {
@@ -7,6 +8,7 @@ function AdminProgress() {
     <div>
         <Navbar/>
         <ListOfProgress/>
+        <AdminFooter/>
     </div>
   )
 }

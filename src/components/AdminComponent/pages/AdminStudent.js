@@ -1,5 +1,6 @@
 import React from 'react'
 import ListOfStudents from '../../StudentComponents/ListOfStudents'
+import AdminFooter from '../AdminFooter'
 import Navbar from '../Navbar'
 
 function AdminStudent() {
@@ -7,6 +8,7 @@ function AdminStudent() {
     <div>
         <Navbar/>
         <ListOfStudents/>
+        <AdminFooter/>
     </div>
   )
 }

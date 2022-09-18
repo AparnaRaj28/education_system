@@ -51,6 +51,7 @@ const ListOfCourse = () => {
                             <td>{course.id}</td>
                             <td>{course.courseName}</td>
                             <td>{course.courseAmount}</td>
+                            <Link className='btn btn-info' to= {`/admin/updateCourse/${course.id}`} > Update </Link>
                             <td><button className='btn btn-danger' onClick={( ) => deleteCourse(course.id)}>delete</button></td>
                         </tr>
                     )

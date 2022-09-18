@@ -1,28 +1,66 @@
 import React from 'react'
+import './HomeNavbar.css'
+import { Link } from 'react-router-dom';
 
 function HomeNavbar1() {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a href="#" class="navbar-brand">
-            {/* <img src="images/logo.svg" height="28" alt="CoolBrand"> */}Logo
-        </a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav">
-                <a href="#" class="nav-item nav-link active">Home</a>
-                <a href="#" class="nav-item nav-link">Profile</a>
-                <a href="#" class="nav-item nav-link">Messages</a>
-                <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>
-            </div>
-            <div class="navbar-nav ms-auto">
-                <a href="#" class="nav-item nav-link">Login</a>
-            </div>
-        </div>
-    </div>
-</nav>
+    <nav className='navbar'>
+        <div className='navbar-container'>
+          <Link to='/' className='navbar-logo' >
+            EDU &nbsp;
+            <i class="fa-sharp fa-solid fa-graduation-cap"></i>
+          </Link>
+          {/* <div className='menu-icon' >
+            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+          </div>
+          <ul className={click ? 'nav-menu active' : 'nav-menu'}>*/}
+            <li className='nav-item'> 
+              <Link to='/' className='nav-links' >
+                Home
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
+                to='/about'
+                className='nav-links'
+               
+              >
+                About
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
+                to='/contact'
+                className='nav-links'
+               
+              >
+                Contact-Us
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
+                to='/studentLogin'
+                className='nav-links'>
+
+                
+                <button type="button" class="btn btn-outline-light">Sign-In</button>
+              </Link>
+            
+            </li>
+            <li className='nav-item'>
+              <Link
+                to='/adminLogin'
+                className='nav-links'>
+
+                
+                <button type="button" class="btn btn-outline-light">Admin</button>
+              </Link>
+            
+            </li>
+           
+       </div>
+          
+      </nav>
   )
 }
 

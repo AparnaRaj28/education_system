@@ -1,27 +1,63 @@
-import React , {useState}from 'react'
-import {useNavigate,Link } from 'react-router-dom';
+import React , {useEffect,useState}from 'react'
+import {useParams,Link,useNavigate } from 'react-router-dom';
 import CourseService from '../../services/CourseService';
 import Navbar from '../AdminComponent/Navbar';
 
 const AddCourse = () => {
     const [courseName, setCourseName] = useState('');
     const [courseAmount, setCourseAmount] = useState('')
+    const {id} = useParams();
     
-    
-    const navigate = useNavigate();
+    let navigate = useNavigate();
+    const GotoNext = () =>{
+        navigate("/admin/courses");
+    }
 
+
+  
     const saveOrUpdateCourse =(e)=>{
         e.preventDefault();
-        const Course ={courseName,courseAmount}
         
+        const Course ={id,courseName,courseAmount}
+        if(id){
+            CourseService.updateCourse(id, Course).then((Response) =>{
+                console.log(Response.data)
+                alert("Course is updated");
+                GotoNext();
+            }).catch(error =>{
+                console.log(error)
+            })
+        }
+        else{
         CourseService.createCourse(Course).then((Response) => {
            console.log(Response.data)
-            navigate('/admin/courses');
+           alert("New course added")
+           GotoNext();
 
 
         }).catch(error =>{
             console.log(error.response.data)
         })
+    }
+    }
+//*******************Getting course by id*************************** */
+    useEffect(() =>{
+        CourseService.getCourseById(id).then((Response) =>{
+            setCourseName(Response.data.courseName)
+            setCourseAmount(Response.data.courseAmount)
+        
+        }).catch(error =>{
+            console.log(error)
+        })
+    }, [])
+//************************************************************************ */
+    const title = () =>{
+        if(id){
+            return <h3 className='text-center'> Update Student </h3>
+        }
+        else{
+            return <h3 className='text-center'> Add Student </h3>
+        }
     }
     
   return (
@@ -31,12 +67,18 @@ const AddCourse = () => {
     <div className='container'>
     <div >
     <div className='card col-md-6 offset-md-3 offset-md-3'>
-                    <h1>Add Course</h1>
+            {
+                title()
+            }
     <div className='card-body'>
         <form>
             <div className='form-group mb-2'>
                 <label className='form-label'>Course :</label>
-                <input type={'text'} placeholder="enter course" name='course' className='form-control' value={courseName} onChange ={(e) => setCourseName(e.target.value)} />
+                <input
+                        type= "text" placeholder='Enter course' name='firstName' value={courseName} className="form-control"
+                        onChange= {(e) =>setCourseName(e.target.value)} 
+                        required/>    
+                {/* <input type={'text'} placeholder="enter course" name='course' className='form-control' value={courseName} onChange ={(e) => setCourseName(e.target.value)} /> */}
             </div>
             <div className='form-group mb-2'>
                 <label className='form-label'>Amount :</label>

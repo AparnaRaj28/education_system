@@ -5,6 +5,7 @@ import {Link, Navigate, useNavigate} from 'react-router-dom'
 
 
 import TrainingSchuduleService from '../../../services/TrainingSchuduleService'
+import AdminFooter from '../AdminFooter'
 import Navbar from '../Navbar'
 
 const AdminScheduleTrainings = () => {
@@ -104,7 +105,7 @@ const AdminScheduleTrainings = () => {
             </tbody>
 
         </table>
-        
+        <AdminFooter/>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const GETALL_PAYMENT_REST_API = 'http://localhost:8082/es/payments';
-const SAVE_PAYMENT_REST_API = 'http://localhost:8081/es/savepayment/student';
+const SAVE_PAYMENT_REST_API = 'http://localhost:8082/es/payment';
 
 class PaymentService{
     getAllPayments(){
@@ -10,6 +10,9 @@ class PaymentService{
 
     AddPayment(payment){
         return axios.post(SAVE_PAYMENT_REST_API,payment);
+    }
+    getPaymentById(id){
+        return axios.get(SAVE_PAYMENT_REST_API + '/student/' +id);
     }
 }
 

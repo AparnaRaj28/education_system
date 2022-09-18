@@ -4,9 +4,10 @@ import {Link} from 'react-router-dom'
 
 import PaymentModal from './Payment/PaymentModal'
 
-const GetTrainingSchedules = () => {
+const GetTrainingSchedules = (props) => {
 
-    const[openModal,setopenModal]=useState(false);
+   
+    // const[openModal,setopenModal]=useState(false);
     const [trainingSchedules, setTrainingSchedules] = useState([])
 
     useEffect(() => {
@@ -21,11 +22,13 @@ const GetTrainingSchedules = () => {
     
 
   return (
-    
+  
     <div className='container'>
+        
+         
         {/* <StudentNavbar/><br></br><br></br><br></br><br></br><br></br> */}
         <br></br> <br></br> <br></br>
-        <h2 className='text-center'>Training Schedules</h2>
+        <h2 className='text-center'>Training Schedules</h2> <h3>{props.data}</h3>
         {/* <Link to="/addPayment" className='btn btn-primary mb-2'>Add Payment</Link> */}
         <table className='table table-bordered table-striped'>
             <thead>
@@ -50,10 +53,11 @@ const GetTrainingSchedules = () => {
                              <td>{schedule.startDate}</td>
                              <td>{schedule.endDate}</td>
                              <td>{schedule.timings}</td>
-                             <td><button onClick={()=>{
+                             <td>
+                             {/* <td><button onClick={()=>{
                                 setopenModal(true);
-                             }}>
-                             Enroll</button>
+                             }}> */}
+                            <Link to={`/student/addPayment/${props.data}/${schedule.course.id}`} className="btn btn-success">Enroll</Link>
                              
                              </td>
                              
@@ -65,7 +69,8 @@ const GetTrainingSchedules = () => {
             </tbody>
 
         </table>
-        { openModal && <PaymentModal closeModal={setopenModal}/>}
+       
+        {/* { openModal && <PaymentModal closeModal={setopenModal}/>} */}
     </div>
   )
 }
